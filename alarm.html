@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Alarm</title>
+</head>
+
+<body>
+    <h1>set Alarm</h1>
+    <input id="time" type="time" min="01:00" max="24:00">
+    <button onclick="myFunction()">start</button>
+    <script>
+        function myFunction() {
+            const time = document.getElementById("time").value.split(':');
+            const timeSelected = (parseInt(time[0]) * 60 * 60 + parseInt(time[1]) * 60) * 1000;
+            console.log(timeSelected);
+            var d = new Date();
+            var hours = d.getHours();
+            var minutes = d.getMinutes();
+            console.log(hours, minutes);
+            const currentTime = (hours * 60 * 60 + minutes * 60) * 1000;
+            console.log("ssss", currentTime)
+            const timeDifference = timeSelected - currentTime;
+            console.log('differe', timeDifference)
+            if (timeDifference <= 0) {
+                alert("Check Time");
+            } else {
+                setTimeout(function() {
+                    alert("alarm");
+                }, timeDifference)
+            }
+
+
+
+            console.log(time);
+        }
+    </script>
+</body>
+
+</html>
